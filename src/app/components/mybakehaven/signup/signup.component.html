@@ -1,0 +1,38 @@
+<div class="w-full fixed">
+    <img src="../../../../assets/photos/backgroundImage.webp" alt="bg-image" class=" left-0 w-full  object-cover z-0">
+<div class="w-1/3 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-md z-10">
+    <h1 class="flex justify-center underline">Signup Here</h1>
+    <form [formGroup]="signupForm" class="mt-2">
+        <div class="mb-2">
+            <label for="firstName" class="block text-gray-700 text-md mb-2">First name</label>
+            <input type="text" formControlName="firstName" placeholder="" name="firstName" class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+            <div *ngIf="signupForm.get('firstName')?.hasError('required') && (signupForm.get('firstName')?.touched || submitted)"  class="text-red-500">First Name is required</div>
+        </div>
+        <div class="mb-4">
+            <label for="lastName" class="block text-gray-700 text-md mb-2">Last name</label>
+            <input type="text" formControlName="lastName" placeholder="" name="lastName" class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+            <div *ngIf="signupForm.get('lastName')?.hasError('required') && (signupForm.get('lastName')?.touched || submitted)"  class="text-red-500">Last name is required</div>
+        </div>
+        <div class="mb-2">
+            <label for="phoneNumber" class="block text-gray-700 text-md mb-2">Phone Number</label>
+            <input type="text" formControlName="phoneNumber" placeholder="" name="phoneNumber" class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-2">
+            <label for="email" class="block text-gray-700 text-md mb-2">Email</label>
+            <input type="email" formControlName="email" placeholder="Enter email" name="email" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+            <div *ngIf="signupForm.get('email')?.hasError('required') && (signupForm.get('email')?.touched || submitted) "  class="text-red-500"> Email is required </div>
+            <div *ngIf="signupForm.get('email')?.hasError('email') && (signupForm.get('email')?.touched || submitted) " class="text-red-500 text-xs">Please enter a valid email address.</div>
+        
+        </div>
+        <div class="mb-2">
+            <label for="password" class="block text-gray-700 text-md mb-2">Password</label>
+            <input type="password" formControlName="password" placeholder="Enter password" name="password" class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+            <div *ngIf="signupForm.get('password')?.hasError('required') && (signupForm.get('password')?.touched || submitted)"  class="text-red-500">Password is required</div>
+        </div>
+        <button type="button" (click)="onSignup()"  class="w-1/3 mb-2 bg-green-500 text-white mx-10 py-3 rounded-lg focus:outline-none focus:shadow-outline"  >Signup</button>
+        <p class="mt-4 text-center text-gray-500">
+        Already have an account? <span><button (click)="goToLoginPage()" type="button"  class="text-[#2F8294] hover:font-bold">Login</button></span>
+        </p>
+</form>
+</div>
+</div>

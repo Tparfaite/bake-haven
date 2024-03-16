@@ -1,0 +1,95 @@
+<div class=" mt-16">
+    <h1>Our products</h1>
+    
+    <div class="flex items-center justify-center">
+        
+        <ul class="flex gap-x-4 text-blue-600">
+            <li class="rounded bg-gray-200 px-4 p-2"  (click)="showCakes(true)"><a href="">cakes</a></li>
+            <li class="rounded bg-gray-200 px-4 p-2" (click)="showBreads(true)"><a href="">breads</a></li>
+            <li class="rounded bg-gray-200 px-4 p-2"><a href="">ibiraha</a></li>
+            <li class="rounded bg-gray-200 px-4 p-2"><a href="">capati</a></li>
+            <li class="rounded bg-gray-200 px-4 p-2"><a href="">beignets</a></li>
+            
+        </ul>
+    </div><br>
+    <div class="grid grid-cols-5" *ngIf="cakesAvaillable">
+        <div class="">
+            <img src="../../../../assets/photos/cake1.jfif"  alt="">
+        
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake2.jfif"  alt="">
+            
+        </div>
+        <div>
+            <img src="../../../../assets/photos/cake3.jfif"  alt="">
+            
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake4.jfif"  alt="">
+           
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake5.jfif" style="height: 230px;" alt="">
+           
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake6.jfif"  alt="">
+           
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake7.jfif"  alt="">
+            
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake8.jfif"  alt="">
+            
+        </div>
+        <div >
+            <img src="../../../../assets/photos/cake9.jfif"  alt="">
+           
+        </div>
+        <div>
+            <img src="../../../../assets/photos/cake10.jfif" style="height: 250px;" alt="">
+            
+        </div>
+        <div>
+            <img src="../../../../assets/photos/cake10.jfif" style="height: 250px;" alt="">
+            
+        </div>
+      
+    </div>
+
+    <div class="grid grid-cols-5" *ngIf="breadsAvailable">
+        <div>
+            <img src="../../../../assets/photos/bread1.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread2.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread3.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread4.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread5.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread6.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread7.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread8.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread9.jfif" alt="">
+        </div>
+        <div>
+            <img src="../../../../assets/photos/bread10.jfif" alt="">
+        </div>
+    </div>
+</div>

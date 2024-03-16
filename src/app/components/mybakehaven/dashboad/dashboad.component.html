@@ -1,0 +1,258 @@
+<div class=" flex mt-16">
+      
+        <div class="bg-[#394B67] w-1/6  pb-24 z-10 pl-2 left-0 top-0  fixed mt-16 mb-16 ">
+            <h2 class="text-white">Dashboard</h2>
+            <hr class="mt-10" >
+            <div class="">
+             <div>
+                 <mat-icon class="text-white">home</mat-icon><button class="mt-2 px-5 rounded text-white hover:text-black cursor-pointer" type="button"  > Home</button><br>
+             </div>
+             <div>
+                 <mat-icon class="text-white">account_circle</mat-icon>
+                 <button class="mt-2   p-5 rounded hover:text-black text-white cursor-pointer" type="button"> Customers</button><br>
+             </div>
+             <div>
+                 <mat-icon class="text-white">store  </mat-icon>
+                 <button class="mt-2   p-5 rounded hover:text-black text-white cursor-pointer" type="button" (click)="showProductClicked(true)" > Products</button><br>
+             </div>
+     
+             <div>
+                 <mat-icon class="text-white">shopping_cart</mat-icon>
+                 <button class="mt-2   p-5 rounded hover:text-black text-white cursor-pointer" type="button"  > Orders</button><br>
+             </div>
+            
+             <hr>
+             <div>
+                 <mat-icon class="text-white">logout</mat-icon>
+                 <button class="mt-10   p-5 rounded hover:text-black text-white cursor-pointer" type="button"  > Logout</button> <br>
+             </div>
+            </div>
+        </div>
+    
+        <!-- Table for customers -->
+        <div *ngIf="showCustomer"  class="table fixed  overflow-y-auto  mt-0 w-3/4 h-full  bg-gray-300 px-6 py-16" >
+            CUSTOMERS
+        
+            <div class="overflow-y-auto h-full shadow-md sm:rounded-lg mt-5 ">
+              <table class="w-full text-sm text-left  text-blue-100 dark:text-blue-100">
+                <thead class="text-xs text-white uppercase bg-gray-600 border-b border-blue-400 dark:text-white">
+                  <tr>
+                    <th scope="col" class="px-6 py-3">
+                      ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Names
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      phone Number
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Delete
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Edit
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="bg-gray-600 ">
+                  <tr class="border-b border-blue-400">
+                    <td class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                      1
+                    </td>
+                    <td class="px-6 py-4">
+                     parfaite pacha
+                    </td>
+                    <td class="px-6 py-4">
+                      pacha@gmail.com
+                    </td>
+                    <td class="px-6 py-4">
+                      +25078777777
+                    </td>
+                    <td class="px-6 py-4">
+                        <button type="button" class="font-medium text-white hover:underline">Delete</button>
+                    </td>
+                    <td class="px-6 py-4">
+                        <button type="button" class="font-medium text-white hover:underline">Edit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+           </div>
+       </div>
+
+       <!-- Table for products -->
+
+       <div *ngIf="showProduct"  class="table fixed  overflow-y-auto  mt-0 w-3/4 h-full  bg-gray-300 px-6 py-16" >
+        <div class="flex justify-between"> <h1>Products Available</h1> <button type="button" class="bg-green-400 p-3 rounded-md text-white" (click)="addProductClicked()">Add product</button></div>
+      
+    
+        <div class="overflow-y-auto h-full shadow-md sm:rounded-lg mt-5 ">
+          <table class="w-full text-sm text-left  text-blue-100 dark:text-blue-100">
+            <thead class="text-xs text-white uppercase bg-gray-600 border-b border-blue-400 dark:text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+                  ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Produc name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  quantity
+                </th>
+                <th scope="col" class="px-6 py-3">
+                 price for each
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Delete
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Edit
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-gray-600 ">
+              <tr class="border-b border-blue-400">
+                <td class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                  1
+                </td>
+                <td class="px-6 py-4">
+                  Wedding cake
+                </td>
+                <td class="px-6 py-4">
+                  2
+                </td>
+                <td class="px-6 py-4">
+                  $2999
+                </td>
+                <td class="px-6 py-4">
+                    <button type="button" class="font-medium text-white hover:underline">Delete</button>
+                </td>
+                <td class="px-6 py-4">
+                    <button type="button" class="font-medium text-white hover:underline">Edit</button>
+                </td>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+   <!-- Table for orders -->
+   <div *ngIf="showOrders"  class="table fixed  overflow-y-auto  mt-0 w-3/4 h-full  bg-gray-300 px-6 py-16" >
+    <h1>Orders made</h1> 
+ 
+     <div class="overflow-y-auto h-full shadow-md sm:rounded-lg mt-5 ">
+       <table class="w-full text-sm text-left  text-blue-100 dark:text-blue-100">
+         <thead class="text-xs text-white uppercase bg-gray-600 border-b border-blue-400 dark:text-white">
+           <tr>
+             <th scope="col" class="px-6 py-3">
+               Order_Id
+             </th>
+             <th scope="col" class="px-6 py-3">
+               product_Id
+             </th>
+             <th scope="col" class="px-6 py-3">
+                customer_Id
+             </th>
+             <th scope="col" class="px-6 py-3">
+               product_Name
+             </th>
+             <th scope="col" class="px-6 py-3">
+              price
+             </th>
+             <th scope="col" class="px-6 py-3">
+                Status
+             </th>
+             <th scope="col" class="px-6 py-3">
+               Approve
+             </th>
+             <th scope="col" class="px-6 py-3">
+                 Reject
+             </th>
+           </tr>
+         </thead>
+         <tbody class="bg-gray-600 ">
+           <tr class="border-b border-blue-400">
+             <td class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+               1
+             </td>
+             <td class="px-6 py-4">
+               2
+             </td>
+             <td class="px-6 py-4">
+               3
+             </td>
+             <td class="px-6 py-4">
+               wedding cake
+             </td>
+             <td class="px-6 py-4">
+                50000
+              </td>
+              <td class="px-6 py-4">
+                paid
+              </td>
+             <td class="px-6 py-4">
+                 <button type="button" class="font-medium text-white hover:underline">Delete</button>
+             </td>
+             <td class="px-6 py-4">
+                 <button type="button" class="font-medium text-white hover:underline">Edit</button>
+             </td>
+             
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
+
+<div *ngIf="productForm" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-md z-10">
+    <form [formGroup]="addProductForm"> 
+        <div class="flex justify-between">
+            <h1>Add product</h1>
+            <mat-icon class="text-red-500" (click)="closeProductForm()" >close</mat-icon>
+        </div>
+        
+        <div>
+            <label for="productName" class="block text-gray-700 text-md mb-2">Product name </label>
+            <input type="text" formControlName="productName"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <div *ngIf="addProductForm.get('productName')?.hasError('required') && (addProductForm.get('productName')?.touched) "  class="text-red-500"> product name is required </div>
+        </div>
+        <div>
+            <label for="category" class="block text-gray-700 text-md mb-2">category</label>
+            <select formControlName="category" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="">Select category</option>
+                <option *ngFor="let category of productCategory" [ngValue]="category">
+                    {{category}}
+                </option>
+            </select>
+            <div *ngIf="addProductForm.get('category')?.hasError('required') && (addProductForm.get('category')?.touched) "  class="text-red-500"> select category please </div>
+        </div>
+        <div>
+            <label for="Quantity" class="block text-gray-700 text-md mb-2">Quantity</label>
+            <input type="number" formControlName="quantity"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <div *ngIf="addProductForm.get('quantity')?.hasError('required') && (addProductForm.get('quantity')?.touched) "  class="text-red-500"> Quantity is required </div>
+        </div>
+        <div>
+            <label for="Price" class="block text-gray-700 text-md mb-2">Price</label>
+            <input type="number" formControlName="price"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <div *ngIf="addProductForm.get('price')?.hasError('required') && (addProductForm.get('price')?.touched) "  class="text-red-500"> Price is required </div>
+        </div>
+        <div>
+            <label for="image" class="block text-gray-700 text-md mb-2">Image </label>
+            <input type="text"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" formControlName="imageurl"> 
+            <div *ngIf="addProductForm.get('imageurl')?.hasError('required') && (addProductForm.get('imageurl')?.touched) "  class="text-red-500"> imageUrl is required </div>
+        </div>
+        <button type="button" class="mt-2 px-6 bg-green-500 text-white mx-10 py-3 rounded-lg focus:outline-none focus:shadow-outline" (click)="addProduct()" >Add product</button>
+    </form>
+</div>
+
+
+          
+</div>
+
+
+
+
+
