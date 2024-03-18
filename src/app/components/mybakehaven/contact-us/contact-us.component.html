@@ -35,7 +35,7 @@
                 <form [formGroup]="contactForm" class="bg-[#B9ACAC">
                     <div class="mb-4 mx-4">
                         <label for="full name" class="block text-gray-700 text-md mb-2">Full name</label>
-                        <input type="text" formControlName="fullNames"
+                        <input type="text" formControlName="names"
                             class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
                         <div *ngIf="contactForm.get('fullNames')?.hasError('required') && contactForm.get('fullNames')?.touched "
                             class="text-red-500">your name is required</div>
@@ -54,7 +54,8 @@
                     <div class="mb-4 mx-4">
                         <label for="message" class="block text-gray-700 text-md mb-2">Message</label>
                         <textarea formControlName="message" id="message" rows="5"
-                            class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"></textarea>
+                            class="shadow border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+                        </textarea>
                         <div *ngIf="contactForm.get('message')?.hasError('required') && contactForm.get('message')?.touched "
                             class="text-red-500">Your message is empty</div>
                     </div>

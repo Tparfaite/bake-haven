@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted:boolean=false;
 
-  constructor(private formBuilder: FormBuilder, private router:Router){
+  constructor(
+    private formBuilder: FormBuilder,
+    private router:Router,
+    private authService: AuthService,
+    private taostr: ToastrService
+    ){
     this.loginForm= this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['',[Validators.required]]
@@ -26,7 +33,19 @@ export class LoginComponent implements OnInit {
     this.submitted=true;
     if(this.loginForm.valid){
       const formData=this.loginForm.value;
-      console.log("formData", formData);
+      this.authService.login(formData).subscribe({
+        next: (logedUser=>{
+          console.log("formData", logedUser);
+          this.taostr.success('Logged in successful!');
+          this.router.navigate(['/product'])
+
+        }),
+        error:(error=>{
+          console.log('logged error',error);
+          this.taostr.error('Failed to login')
+        })
+      })
+      
       this.loginForm.reset()
     }else{
       return;

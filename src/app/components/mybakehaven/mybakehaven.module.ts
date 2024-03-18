@@ -17,6 +17,7 @@ import { DashboadComponent } from './dashboad/dashboad.component';
 
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -28,7 +29,8 @@ import { DashboadComponent } from './dashboad/dashboad.component';
     SignupComponent,
     LoginComponent,
     GalleryComponent,
-    DashboadComponent
+    DashboadComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { DashboadComponent } from './dashboad/dashboad.component';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    
   ],
   exports: [
     FooterComponent,
@@ -46,7 +49,10 @@ import { DashboadComponent } from './dashboad/dashboad.component';
     ContactUsComponent,
     SignupComponent,
     LoginComponent,
-    GalleryComponent
-  ]
+    GalleryComponent,
+    DashboadComponent,
+    LoginComponent
+  ],
+  
 })
 export class MybakehavenModule { }

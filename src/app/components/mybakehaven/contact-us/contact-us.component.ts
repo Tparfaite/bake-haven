@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-us',
@@ -8,9 +10,13 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class ContactUsComponent implements OnInit {
   contactForm:FormGroup;
- constructor(private formBuilder: FormBuilder){
+ constructor(
+  private formBuilder: FormBuilder,
+  private authService: AuthService,
+  private toastr:ToastrService
+  ){
   this.contactForm = this.formBuilder.group({
-    fullNames: ['',[Validators.required]],
+    names: ['',[Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     message:['', Validators.required]
   })
@@ -22,7 +28,14 @@ export class ContactUsComponent implements OnInit {
  clickSendMessage(){
   if(this.contactForm.valid){
    const fullMessage = this.contactForm.value;
-   console.log("full message sent",fullMessage )
+   this.authService.createMessage(fullMessage).subscribe({
+    next:(message=>{
+      this.toastr.success('Your message has sent')
+    }),error:(error=>{
+      this.toastr.error('Failed to sent your message')
+    })
+   })
+   this.contactForm.reset()
   }
  }
 

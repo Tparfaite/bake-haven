@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,13 +21,14 @@ import { ToastrModule } from 'ngx-toastr';
     NoopAnimationsModule,
     MybakehavenModule,
     MatIconModule,
+    HttpClientModule,
     ToastrModule.forRoot({
-      timeOut: 4000,
+      timeOut: 2000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
   ],
-  providers: [],
+ 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -6,30 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
+
+  inputValue:FormControl=new FormControl();
+
   products = [
     {
     imageUrl: "../../../../assets/photos/cake3.jfif", 
     name: 'Birthday cake',
+    description:'Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake ',
     price: 10000,
    },
    {
     imageUrl: "../../../../assets/photos/cake1.jfif", 
     name: 'Birthday cake',
+    description:'Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake ',
     price: 15000,
    },
    {
     imageUrl: "../../../../assets/photos/wedingcake2.jfif", 
     name: 'wedding cake',
+    description:'Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake ',
     price: 50000,
    },
    {
     imageUrl: "../../../../assets/photos/wedingcake1.jfif", 
     name: 'wedding cake',
+    description:'Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake ',
     price: 60000,
    },
    {
     imageUrl: "../../../../assets/photos/cake9.jfif", 
     name: 'Birthday cake',
+    description:'Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake ',
     price: 19.99,
    },
    {
@@ -86,6 +95,12 @@ export class ProductsComponent {
 
 
  orderingProduct(name:any, price:any){
+
   console.log("product ordered", name,price)
  }
+
+ getValue(){
+  console.log(this.inputValue.value)
+ }
+
 }

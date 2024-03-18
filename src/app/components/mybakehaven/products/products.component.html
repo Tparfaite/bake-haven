@@ -1,14 +1,24 @@
-<!-- <div class="flex flex-col justify-center items-center h-1/2 bg-gray-100">
-    <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="w-1/2  rounded-lg mb-4">
-  
-    <h2 class="text-2xl font-semibold mb-2">{{ product.name }}</h2>
-    <p class="text-lg text-gray-700 mb-4">$<span class="font-bold">{{ product.price }}</span></p>
-  
-    <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-green-500">Order Now</button>
-</div> -->
+
 
 <div class="mt-16">
     <h1 class="flex justify-center">Make your order now </h1>
+    <div>
+        <div class="bg-blue-100 m-auto p-8 rounded-md flex w-1/2">
+            <div class="w-3/5">
+                <img src="../../../../assets/photos/cake8.jfif" alt="best cake ever">
+                <h4>Wedding cake</h4>
+                <p class="font-bold">Rwf 10000</p>
+                
+            </div>
+            <div>
+                <p class="px-4 pt-5">Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake</p>
+              <label for="quantity" class="mx-5">Quantity:</label>  <input type="number" class="w-16 p-2 ml-0 m-5 outline-none rounded-lg" name="quantity" [formControl]="inputValue" >
+                <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-green-500" (click)="getValue()">Order now</button>
+            </div>
+           
+            
+        </div>
+    </div>
     <div class="mt-16  grid grid-cols-6 gap-4 gap-x-4 mx-4 " >
         <div *ngFor="let product of products" class="bg-blue-100 p-4 " style="width: 200px; height: 300px;" (click)="orderingProduct(product.name, product.price)">
             <img src="{{product.imageUrl}}" alt="" class="rounded" style="height: 150px;" >
