@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {CreateUserDto, UserLogin, Messages, Product} from '../models/user.model';
+import {CreateUserDto, UserLogin, Messages, Product, OrderDto} from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
@@ -24,6 +24,14 @@ export class AuthService {
     )
   }
 
+  createOrder(order:OrderDto):Observable<any>{
+    return this.http.post<OrderDto>(`${this.appUrl}/order`, order, {headers:this.header}).pipe(
+      tap(result=>{
+        console.log("created order", result)
+      })
+    )
+  }
+
   login(user: UserLogin): Observable<any>{
     return this.http.post<UserLogin>(`${this.appUrl}/users/login`, user,{headers:this.header}).pipe(
       tap(loggedUser=>{
@@ -36,6 +44,14 @@ export class AuthService {
     return this.http.get(`${this.appUrl}/users/all`,{headers:this.header}).pipe(
       tap(getUsers=>{
         console.log('getUsers',getUsers)
+      })
+    )
+  }
+
+  getOrders():Observable<any>{
+    return this.http.get(`${this.appUrl}/order/allOrders`, {headers:this.header}).pipe(
+      tap(getOrders=>{
+        console.log('all orders', getOrders)
       })
     )
   }
@@ -72,10 +88,18 @@ export class AuthService {
     )
   }
 
-  deleteMessage(id:number){
+  deleteMessage(id:number):Observable<any>{
     return this.http.delete(`${this.appUrl}/messages/${id}`, {headers:this.header}).pipe(
       tap(deleteMessage=>{
         console.log("delete message",deleteMessage)
+      })
+    )
+  }
+
+  deleteProduct(id:number):Observable<any>{
+    return this.http.delete(`${this.appUrl}/products/${id}`, {headers:this.header}).pipe(
+      tap(deletedProduct=>{
+        console.log('deleted product', deletedProduct)
       })
     )
   }
@@ -96,16 +120,8 @@ export class AuthService {
     )
   }
 
-  deleteProduct(id:number):Observable<any>{
-    return this.http.get(`${this.appUrl}/products/${id}`, {headers:this.header}).pipe(
-      tap(deletedProduct=>{
-        console.log('deleted product', deletedProduct)
-      })
-    )
-  }
-
-  updateProduct(id:number): Observable<any>{
-    return this.http.patch(`${this.appUrl}/products/${id}`, {Headers:this.header}).pipe(
+  updateProduct(id:number, productData: Product): Observable<Product>{
+    return this.http.patch<Product>(`${this.appUrl}/products/${id}`,productData, {headers:this.header}).pipe(
       tap(updatedProduct=>{
         console.log('updated product', updatedProduct)
       })

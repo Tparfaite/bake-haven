@@ -5,7 +5,7 @@
             <hr class="mt-10" >
             <div class="">
              <div>
-                 <mat-icon class="text-white">home</mat-icon><button class="mt-2 px-5 rounded text-white hover:text-black cursor-pointer" type="button"  > Home</button><br>
+                 <mat-icon class="text-white">home</mat-icon><button class="mt-2 px-5 rounded text-white hover:text-black cursor-pointer" type="button" (click)="homeClicked()" > Home</button><br>
              </div>
              <div>
                  <mat-icon class="text-white">account_circle</mat-icon>
@@ -35,7 +35,7 @@
         </div>
     
         <!-- Table for customers -->
-        <div *ngIf="customers"  class="table fixed  overflow-y-auto  mt-0 w-3/4 h-full  bg-gray-300 px-6 py-16" >
+        <div *ngIf="users"  class="table fixed  overflow-y-auto  mt-0 w-3/4 h-full  bg-gray-300 px-6 py-16" >
            <h1>Our Customers</h1>
         
             <div class="overflow-y-auto h-full shadow-md sm:rounded-lg mt-5 ">
@@ -63,21 +63,21 @@
                   </tr>
                 </thead>
                 <tbody class="bg-gray-600 ">
-                  <tr *ngFor="let customer of customers"  class="border-b border-blue-400">
+                  <tr *ngFor="let user of users"  class="border-b border-blue-400">
                     <td class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-                      {{customer.id}}
+                      {{user.id}}
                     </td>
                     <td class="px-6 py-4">
-                     {{customer.names}}
+                     {{user.firstName}} {{user.lastName}}
                     </td>
                     <td class="px-6 py-4">
-                      {{customer.email}}
+                      {{user.email}}
                     </td>
                     <td class="px-6 py-4">
-                     {{customer.phoneNumber}}
+                     {{user.phoneNumber}}
                     </td>
                     <td class="px-6 py-4">
-                        <button type="button" class="font-medium text-white hover:underline">Delete</button>
+                        <button type="button" class="font-medium text-white hover:underline" (click)="deleteCustomer(user.id)" >Delete</button>
                     </td>
                     <td class="px-6 py-4">
                         <button type="button" class="font-medium text-white hover:underline">Edit</button>
@@ -139,10 +139,10 @@
                   {{product.price}}
                  </td>
                 <td class="px-6 py-4">
-                    <button type="button" class="font-medium text-white hover:underline">Delete</button>
+                    <button type="button" class="font-medium text-white hover:underline"  (click)="deleteProduct(product.productId)" >Delete</button>
                 </td>
                 <td class="px-6 py-4">
-                    <button type="button" class="font-medium text-white hover:underline">Edit</button>
+                    <button type="button" class="font-medium text-white hover:underline" (click)="editProduct(product.productId, product)" > Edit</button>
                 </td>
                 
               </tr>
@@ -209,7 +209,7 @@
                 {{order.product.price}}
               </td>
               <td class="px-6 py-4">
-                {{order.product.quantity}}
+                {{order.quantity}}
               </td>
               <td class="px-6 py-4">
                 {{order.totalPrice}}
@@ -266,7 +266,7 @@
             {{message.message}}
           </td>
           <td class="px-6 py-4">
-              <button type="button" class="font-medium text-white hover:underline">Delete</button>
+              <button type="button" class="font-medium text-white hover:underline"  (click)="deleteMessage(message.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -281,7 +281,15 @@
             <h1>Add product</h1>
             <mat-icon class="text-red-500" (click)="closeProductForm()" >close</mat-icon>
         </div>
-        
+        <div>
+          <label for="image" class="block text-gray-700 text-md mb-2">Image </label>
+          <input type="file"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" formControlName="imageUrl" (change)="onFileSelected($event)" accept="image/*"> 
+          <div *ngIf="imageUrl">
+            <img src="{{imageUrl}}" style="height: 80px;" alt="">
+          </div>
+          <div *ngIf="addProductForm.get('imageurl')?.hasError('required') && (addProductForm.get('imageurl')?.touched) "  class="text-red-500"> imageUrl is required </div>
+       </div>
+
         <div>
             <label for="productName" class="block text-gray-700 text-md mb-2">Product name </label>
             <input type="text" formControlName="productName"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -315,12 +323,8 @@
           <div *ngIf="addProductForm.get('description')?.hasError('required') && addProductForm.get('description')?.touched "
               class="text-red-500 text-sm">Description is required </div>
       </div>
-        <div>
-            <label for="image" class="block text-gray-700 text-md mb-2">Image </label>
-            <input type="text"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" formControlName="imageurl"> 
-            <div *ngIf="addProductForm.get('imageurl')?.hasError('required') && (addProductForm.get('imageurl')?.touched) "  class="text-red-500"> imageUrl is required </div>
-        </div>
-        <button type="button" class="mt-2 px-6 bg-green-500 text-white mx-10 py-3 rounded-lg focus:outline-none focus:shadow-outline" (click)="addProduct()" >Add product</button>
+        
+        <button type="button" class="mt-2 px-6 bg-green-500 text-white mx-10 py-3 rounded-lg focus:outline-none focus:shadow-outline" (click)="addProduct()" > {{isEdit ? 'Update product': 'Add product'}}</button>
     </form>
 </div>
 

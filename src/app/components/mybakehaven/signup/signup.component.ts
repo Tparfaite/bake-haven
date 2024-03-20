@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit{
         next:(response=>{
           console.log(response)
         }),error:(error=>{
-          console.log('error',error)
+          throw error.message
         })
 
       })

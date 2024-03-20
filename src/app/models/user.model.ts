@@ -9,7 +9,8 @@ export interface CreateUserDto{
 
 export interface UserLogin {
     email: string;
-    password: string
+    password: string;
+   
 }
 
 export interface Messages {
@@ -26,4 +27,11 @@ export interface Product {
     description: string;
     imageUrl: string
     
+}
+
+export interface OrderDto {
+    orderId: number;
+    productId: number;
+    quantity: number
+
 }

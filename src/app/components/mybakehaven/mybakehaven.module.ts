@@ -14,6 +14,7 @@ import { GalleryComponent } from './gallery/gallery.component'
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { DashboadComponent } from './dashboad/dashboad.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -30,7 +31,8 @@ import { DashboadComponent } from './dashboad/dashboad.component';
     LoginComponent,
     GalleryComponent,
     DashboadComponent,
-    LoginComponent
+    LoginComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

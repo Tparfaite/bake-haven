@@ -20,9 +20,9 @@
         </div>
     </div>
     <div class="mt-16  grid grid-cols-6 gap-4 gap-x-4 mx-4 " >
-        <div *ngFor="let product of products" class="bg-blue-100 p-4 " style="width: 200px; height: 300px;" (click)="orderingProduct(product.name, product.price)">
-            <img src="{{product.imageUrl}}" alt="" class="rounded" style="height: 150px;" >
-            <h4 class="font-semibold ">{{product.name}}</h4>
+        <div *ngFor="let product of products" class="bg-blue-100 p-4 " style="width: 200px; height: 300px;" (click)="orderingProduct(product.productName, product.price)">
+            <img src="{{product.imageUrl}}" alt="" class="rounded bg-red-300" style="height: 150px;" >
+            <h4 class="font-semibold ">{{product.productName}}</h4>
             <p class="text-lg text-gray-700 ">Rwf <span>{{product.price}}</span></p>
             <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-green-500">Order Now</button>
         </div>
