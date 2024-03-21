@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import {CreateUserDto, UserLogin, Messages, Product, OrderDto} from '../models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
@@ -10,11 +10,19 @@ export class AuthService {
 
   constructor(private http:HttpClient) {}
 
+
+
   header= new HttpHeaders({
     'Content-Type': 'application/json'
   })
 
   appUrl='http://localhost:3002/api'
+
+  paymentSuccessEvent: EventEmitter<any>= new EventEmitter<any>();
+  paymentSuccessfull(token:any){
+   this.paymentSuccessEvent.emit(token)
+  }
+
 
   createUser(user:CreateUserDto):Observable<any>{
     return this.http.post<CreateUserDto>(`${this.appUrl}/users/create`,user,{headers:this.header}).pipe(
@@ -126,6 +134,40 @@ export class AuthService {
         console.log('updated product', updatedProduct)
       })
     )
+  }
+
+  updateOrder(id:number, order: OrderDto): Observable<OrderDto>{
+    return this.http.patch<OrderDto>(`${this.appUrl}/${id}`,order, {headers:this.header}).pipe(
+      tap(updateOrder=>{
+        console.log("updatedOrder",updateOrder)
+      })
+    )
+  }
+  
+
+  approveOrder(orderId:number):Observable<any>{
+    return this.http.patch(`${this.appUrl}/order/approve/${orderId}`, {header:this.header}).pipe(
+      tap(approveOrder=>{
+        console.log("approved order",approveOrder)
+      })
+    )
+  }
+
+  rejectOrder(orderId:number):Observable<any>{
+    return this.http.patch(`${this.appUrl}/order/reject/${orderId}`, {header:this.header}).pipe(
+      tap(rejectOrder=>{
+        console.log("areject order",rejectOrder)
+      })
+    )
+  }
+
+  getLoggedUser(){
+    const user=localStorage.getItem('logedUser');
+    if(user){
+      const loggedUser=JSON.parse(user)
+      return loggedUser
+    }
+    return;
   }
 
   

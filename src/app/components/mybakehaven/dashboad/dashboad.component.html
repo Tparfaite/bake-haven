@@ -57,9 +57,7 @@
                     <th scope="col" class="px-6 py-3">
                       Delete
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Edit
-                    </th>
+                    
                   </tr>
                 </thead>
                 <tbody class="bg-gray-600 ">
@@ -79,9 +77,7 @@
                     <td class="px-6 py-4">
                         <button type="button" class="font-medium text-white hover:underline" (click)="deleteCustomer(user.id)" >Delete</button>
                     </td>
-                    <td class="px-6 py-4">
-                        <button type="button" class="font-medium text-white hover:underline">Edit</button>
-                    </td>
+                   
                   </tr>
                 </tbody>
               </table>
@@ -180,9 +176,7 @@
              <th scope="col" class="px-2 py-3">
               TotalPrice
              </th>
-             <th scope="col" class="px-6 py-3">
-                Paid
-             </th>
+             
              <th scope="col" class="px-6 py-3">
                Approve
              </th>
@@ -214,14 +208,12 @@
               <td class="px-6 py-4">
                 {{order.totalPrice}}
               </td>
-              <td class="px-6 py-4">
-                {{order.isPaid}}
-              </td>
+              
              <td class="px-6 py-4">
-                 <button type="button" class="font-medium text-white hover:underline">Approve</button>
+                 <button type="button" class="font-medium text-white hover:underline"  (click)="approveOrder(order.orderId)">{{order.status}}</button>
              </td>
              <td class="px-6 py-4">
-                 <button type="button" class="font-medium text-white hover:underline">Reject</button>
+                 <button type="button" class="font-medium text-white hover:underline" (click)="rejectOrder(order.orderId)">{{order.status}}</button>
              </td>
              
            </tr>

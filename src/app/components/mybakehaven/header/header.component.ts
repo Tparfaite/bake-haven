@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +9,19 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  constructor(private authService:AuthService, private router:Router, private toastr:ToastrService){}
+
+  gotoProducts(){
+    const logedUser=this.authService.getLoggedUser()
+    console.log(logedUser)
+
+    if(logedUser){
+      this.router.navigate(['/product'])
+    }
+    else{
+      this.toastr.error('Please login first')
+    }
+  }
 
 }

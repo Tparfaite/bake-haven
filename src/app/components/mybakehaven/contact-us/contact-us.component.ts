@@ -38,5 +38,10 @@ export class ContactUsComponent implements OnInit {
    this.contactForm.reset()
   }
  }
+ whatsapNumber='0786022037';
+ predifinedMessage=''
+ onWhatsapClick(){
+  window.open(`https://wa.me/${this.whatsapNumber}?text=${encodeURIComponent(this.predifinedMessage)}`)
+ }
 
 }

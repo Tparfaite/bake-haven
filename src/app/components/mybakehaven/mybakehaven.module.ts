@@ -15,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { DashboadComponent } from './dashboad/dashboad.component';
 import { PaymentComponent } from './payment/payment.component';
+import { Angular4PaystackModule } from 'angular4-paystack';
 
 
 
@@ -40,6 +41,7 @@ import { PaymentComponent } from './payment/payment.component';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    Angular4PaystackModule.forRoot('pk_test_722f0fe4cbb742d1885b1a2efe21bb6f1720a7b3'),
     
   ],
   exports: [
@@ -53,7 +55,8 @@ import { PaymentComponent } from './payment/payment.component';
     LoginComponent,
     GalleryComponent,
     DashboadComponent,
-    LoginComponent
+    LoginComponent,
+    PaymentComponent
   ],
   
 })

@@ -16,14 +16,29 @@
         </div>
 
         <div
-            class="fixed top-3/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 rounded-lg p-8 shadow-md z-10 flex">
+            class="fixed top-3/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 rounded-lg p-8 shadow-md w-1/4 z-10 flex">
 
             <div>
-                <h1 class="font-bold">Meet Us </h1>
+                <h1 class="font-bold">Meet Us On </h1>
                 <ul class="">
-                    <li class="mx-4"><a href=""><mat-icon class="text-blue-500 pt-1">facebook</mat-icon>Facebook</a></li>
-                    <li class="flex"><img src="../../../../assets/photos/whatsap.png" class="pt-0" style="height: 30px;" alt=""><a class="pb-2" href="">whatsapp</a></li>
-                    <li><a href=""><img src="../../../../assets/photos/IG.png" style="height: 20px;" alt="">instagram</a></li>
+                    <li>
+                        <div class="flex">
+                            <img src="../../../../assets/photos/whatsap.png" class="pt-0" style="height: 30px;" alt="">
+                            <a class="mt-2 ml-3" href="" (click)="onWhatsapClick()">whatsapp</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex mt-2">
+                            <img src="../../../../assets/photos/IG.png" style="height: 20px;" alt=""> 
+                            <a class="ml-5" href="https://www.instagram.com/ciella_roxy/" target="_blank">instagram</a>
+                        </div>
+                    </li>
+                    <li >
+                        <div class="mt-2" >
+                            <mat-icon class="text-blue-500">facebook</mat-icon>
+                            <a class="ml-5" href="">Facebook</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

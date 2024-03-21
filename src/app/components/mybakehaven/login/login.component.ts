@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
       const formData=this.loginForm.value;
       this.authService.login(formData).subscribe({
         next: (logedUser=>{
+          localStorage.setItem('logedUser', JSON.stringify(logedUser));
          if(logedUser.role === 'admin'){
           this.router.navigate(['/dashboard']);
+
          }else{
           this.router.navigate(['/product'])
          }

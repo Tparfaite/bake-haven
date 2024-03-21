@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Product } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-gallery',
@@ -7,19 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryComponent implements OnInit {
 
-  cakesAvaillable:boolean=false
-  breadsAvailable:boolean=false
 
-  constructor(){}
+  productCategory=['cake','bread','ibiraha','capati'];
+  products:Product[]=[]
+
+  constructor(private authService:AuthService, private router:Router, private toastr:ToastrService){}
   ngOnInit(): void {
-    this.showCakes(true)
+    this.getAllProducts()
+    
   }
 
-  showCakes(value:boolean){
-    this.cakesAvaillable=value
+ getAllProducts(){
+  this.authService.getAllProducts().subscribe({
+    next:(product=>{
+    this.products=product;
+    console.log("all products",this.products)
+    }),
+    error:(error=>{
+      throw error.message
+    })
+  })
+ }
+
+ goToProductPage(){
+  const logedUser=this.authService.getLoggedUser()
+  console.log(logedUser)
+
+  if(logedUser){
+    this.router.navigate(['/product'])
   }
-  showBreads(value:boolean){
-    this.breadsAvailable=value
+  else{
+    this.toastr.error('Please login first')
   }
+  
+ }
+
+ 
 
 }

@@ -30,8 +30,9 @@ export interface Product {
 }
 
 export interface OrderDto {
-    orderId: number;
+    userId: number;
     productId: number;
-    quantity: number
+    quantity: number;
+
 
 }

@@ -8,6 +8,7 @@ import { ContactUsComponent } from './components/mybakehaven/contact-us/contact-
 import { HomepageComponent } from './components/mybakehaven/homepage/homepage.component';
 import { SignupComponent } from './components/mybakehaven/signup/signup.component';
 import { DashboadComponent } from './components/mybakehaven/dashboad/dashboad.component';
+import { PaymentComponent } from './components/mybakehaven/payment/payment.component';
 
 const routes: Routes = [
   {path:'', component:HomepageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'contact', component: ContactUsComponent},
   {path:'signup', component: SignupComponent},
   {path:'dashboard', component: DashboadComponent},
+  {path:'payment', component: PaymentComponent}
 ];
 
 

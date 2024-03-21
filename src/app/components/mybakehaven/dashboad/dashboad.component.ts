@@ -19,7 +19,7 @@ export class DashboadComponent implements OnInit {
 
   selectedProduct: EventEmitter<Product> = new EventEmitter<Product>()
 
-isEdit:boolean;
+ isEdit:boolean;
 
   users:any;
   products:any;
@@ -144,6 +144,7 @@ isEdit:boolean;
       console.log(newProduct)
       this.authService.createProduct(newProduct).subscribe({
         next:(product=>{
+          this.products.push(product)
           this.toastr.success('Product added successful!')
           console.log("created product",product)
         }), error:(error=>{
@@ -214,6 +215,8 @@ isEdit:boolean;
         console.log('deleted product', deleted)
       },
       error:(error=>{
+        this.toastr.error('Failed to delete this product')
+        this.toastr.error("you can't delete ordered product")
         console.log(error)
       })
     })
@@ -240,7 +243,7 @@ isEdit:boolean;
 
    this.authService.updateProduct(id, product).subscribe({
     next:(updatedProd=>{
-      
+     
       console.log('updated product',updatedProd)
     }),
     error:(error=>{
@@ -249,7 +252,26 @@ isEdit:boolean;
    })
    
    
-   
+  }
+
+  approveOrder(orderId:number):any{
+   this.authService.approveOrder(orderId).subscribe({
+    next:(approveOrder=>{
+     this.authService.getOrders()
+    }),
+    error:(error=>{
+      throw error.message
+    })
+   })
+  }
+  rejectOrder(orderId:number):any{
+    this.authService.rejectOrder(orderId).subscribe({
+      next:(rejectOrder=>{
+   this.authService.getOrders()
+      }), error:(error=>{
+        throw error.message
+      })
+    })
   }
 
   

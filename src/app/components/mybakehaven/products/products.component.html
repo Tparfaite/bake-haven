@@ -3,24 +3,30 @@
 <div class="mt-16">
     <h1 class="flex justify-center">Make your order now </h1>
     <div>
-        <div class="bg-blue-100 m-auto p-8 rounded-md flex w-1/2">
+        <div *ngIf="orderingProducts" class="bg-blue-100 m-auto p-8 rounded-md flex w-1/2">
             <div class="w-3/5">
-                <img src="../../../../assets/photos/cake8.jfif" alt="best cake ever">
-                <h4>Wedding cake</h4>
-                <p class="font-bold">Rwf 10000</p>
+                <img src="{{getClickedProduct.imageUrl}} " alt="best cake ever">
+                <h4>{{getClickedProduct.productName}}</h4>
+                <p class="font-bold">Rwf {{getClickedProduct.price}}</p>
                 
             </div>
             <div>
-                <p class="px-4 pt-5">Our fantastically fresh Sweet Cakes are made entirely out of classic retro sweets. A deliciously unique alternative to a celebration cake</p>
-              <label for="quantity" class="mx-5">Quantity:</label>  <input type="number" class="w-16 p-2 ml-0 m-5 outline-none rounded-lg" name="quantity" [formControl]="inputValue" >
-                <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-green-500" (click)="getValue()">Order now</button>
+                <p class="px-4 pt-5">  {{getClickedProduct.description}}</p>
+              <label for="quantity" class="mx-5">Quantity:</label>  <input type="number" class="w-16 p-2 ml-0 m-5 outline-none rounded-lg" name="quantity" [formControl]="inputValue" [value]="1" >
+                <button type="button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow focus:outline-none focus:ring-green-500" (click)="getValue()" >Buy</button>
             </div>
            
-            
         </div>
     </div>
+
+    <div *ngIf="buyClicked" class="bg-gray-200 p-4 w-1/4 rounded-md mx-32" >  
+        <h1>You are authorized to pay:</h1>
+        <p>{{getClickedProduct.productName}} {{totalPrice}}</p>
+        <app-payment (click)="sendOrder(order)"></app-payment>
+    </div>
+
     <div class="mt-16  grid grid-cols-6 gap-4 gap-x-4 mx-4 " >
-        <div *ngFor="let product of products" class="bg-blue-100 p-4 " style="width: 200px; height: 300px;" (click)="orderingProduct(product.productName, product.price)">
+        <div *ngFor="let product of products" class="bg-blue-100 p-4 " style="width: 200px; height: 300px;" (click)="orderingProduct(product.productId, product)">
             <img src="{{product.imageUrl}}" alt="" class="rounded bg-red-300" style="height: 150px;" >
             <h4 class="font-semibold ">{{product.productName}}</h4>
             <p class="text-lg text-gray-700 ">Rwf <span>{{product.price}}</span></p>
