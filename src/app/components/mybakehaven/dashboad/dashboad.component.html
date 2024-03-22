@@ -267,8 +267,8 @@
 </div>
 
 
-<div *ngIf="productForm" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-8 shadow-md z-10">
-    <form [formGroup]="addProductForm"> 
+<div *ngIf="productForm" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg pt-2 p-8 shadow-md z-10 h-4/5 overflow-y-auto">
+    <form [formGroup]="addProductForm" class="mb-16"> 
         <div class="flex justify-between">
             <h1>Add product</h1>
             <mat-icon class="text-red-500" (click)="closeProductForm()" >close</mat-icon>
@@ -277,7 +277,7 @@
           <label for="image" class="block text-gray-700 text-md mb-2">Image </label>
           <input type="file"  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" formControlName="imageUrl" (change)="onFileSelected($event)" accept="image/*"> 
           <div *ngIf="imageUrl">
-            <img src="{{imageUrl}}" style="height: 80px;" alt="">
+            <img src="{{imageUrl}}" style="height: 40px;" alt="">
           </div>
           <div *ngIf="addProductForm.get('imageurl')?.hasError('required') && (addProductForm.get('imageurl')?.touched) "  class="text-red-500"> imageUrl is required </div>
        </div>

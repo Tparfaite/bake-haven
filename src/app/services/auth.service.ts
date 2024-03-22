@@ -16,7 +16,8 @@ export class AuthService {
     'Content-Type': 'application/json'
   })
 
-  appUrl='http://localhost:3002/api'
+  // appUrl='http://localhost:3002/api'
+  appUrl='https://bakehaven.onrender.com/api'
 
   paymentSuccessEvent: EventEmitter<any>= new EventEmitter<any>();
   paymentSuccessfull(token:any){

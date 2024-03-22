@@ -145,11 +145,13 @@ export class DashboadComponent implements OnInit {
       this.authService.createProduct(newProduct).subscribe({
         next:(product=>{
           this.products.push(product)
-          this.toastr.success('Product added successful!')
+          this.toastr.success('Product added successful!');
+          this.productForm=false
           console.log("created product",product)
         }), error:(error=>{
           this.toastr.error("Failed to add product")
-          console.log("product error",error)
+          console.log("product error",error);
+          
         })
       })
     
